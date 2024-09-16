@@ -6,7 +6,7 @@ const port = 3000;
 app.use('/', express.static('public'));
 
 // Read budget data from JSON file
-app.get('/budget', (req, res) => {
+app.get('/budget-data', (req, res) => {
     fs.readFile('budget-data.json', 'utf8', (err, data) => {
         if (err) {
             res.status(500).send('Error reading budget data');
