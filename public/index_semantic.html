@@ -22,70 +22,39 @@
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </div>
-
-    <div class="container center">
+    <!-- changed div to main for clarity -->
+    <main class="container center">
 
         <div class="page-area">
 
             <div class="text-box">
-                <h1>Stay on track</h1>
+                <!-- changed h1 to h2 to maintain hierarchy -->
+                <h2>Stay on track</h2>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
-                    you would get surprised! Proper budget management depends on real data... and this
+                    you would be surprised! Proper budget management depends on real data... and this
                     app will help you with that!
                 </p>
             </div>
     
             <div class="text-box">
-                <h1>Alerts</h1>
+                <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </div>
     
             <div class="text-box">
-                <h1>Results</h1>
+                <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
+                    Also, they live happier lives... since they expend without guilt or fear... 
                     because they know it is all good and accounted for.
                 </p>
             </div>
     
             <div class="text-box">
-                <h1>Free</h1>
-                <p>
-                    This app is free!!! And you are the only one holding your data!
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Stay on track</h1>
-                <p>
-                    Do you know where you are spending your money? If you really stop to track it down,
-                    you would get surprised! Proper budget management depends on real data... and this
-                    app will help you with that!
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Alerts</h1>
-                <p>
-                    What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Results</h1>
-                <p>
-                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
-                    Also, they to live happier lives... since they expend without guilt or fear... 
-                    because they know it is all good and accounted for.
-                </p>
-            </div>
-    
-            <div class="text-box">
-                <h1>Free</h1>
+                <h2>Free</h2>
                 <p>
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
@@ -93,24 +62,24 @@
 
         </div>
 
-    </div>
+    </main>
 
-    <div class="bottom">
+    <!-- added footer for clarity -->
+    <footer class="bottom">
         <div class="center">
             All rights reserved &copy; Fabio Nolasco
         </div>
-    </div>
+    </footer>
 
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
-    <script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
         var data = {
             datasets: [
                 {
-                    data: [30, 350, 90],
+                    data: [30,350,90],
                     backgroundColor: [
-                       '#ffcd56',
+                        '#ffcd56',
                         '#ff6384',
                         '#36a2eb',
                         '#fd6b19',
@@ -122,16 +91,15 @@
                 'Rent',
                 'Groceries'
             ]
-        };
+        }
 
         function createChart() {
             var ctx = document.getElementById("myChart").getContext("2d");
-            var myPieChart = new Chart(ctx, {
-                type: 'doughnut', 
+            var myPieChart = new chart(ctx, {
+                type: 'pie',
                 data: data
-            })
-        };
-        
+            });
+        }
         createChart();
     </script>
 

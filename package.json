@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/dylanchristensen/personal-budget1#readme",
   "dependencies": {
+    "axios": "^1.7.7",
+    "chart.js": "^4.4.4",
     "express": "^4.21.0"
   }
 }
