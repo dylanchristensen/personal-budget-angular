@@ -1,49 +1,46 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 import { Chart } from 'chart.js';
 
 @Component({
   selector: 'pb-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements AfterViewInit {
-
   public dataSource = {
     datasets: [
-        {
-            data: [],
-            backgroundColor: [
-                '#ffcd56',
-                '#ff6384',
-                '#36a2eb',
-                '#fd6b19',
-            ]
-        }
+      {
+        data: [],
+        backgroundColor: ['#ffcd56', '#ff6384', '#36a2eb', '#fd6b19'],
+      },
     ],
-    labels: []
+    labels: [],
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private dataService: DataService) {}
 
   ngAfterViewInit(): void {
-    this.http.get('http://localhost:3000/budget')
-    .subscribe((res: any) => {
-      for (var i = 0; i < res.myBudget.length; i++) {
-        this.dataSource.datasets[0].data[i] = res.myBudget[i].budget;
-        this.dataSource.labels[i] = res.myBudget[i].title;
-
+    this.dataService.fetchBudgetData().subscribe(
+      (budgetData: any[]) => {
+        for (let i = 0; i < budgetData.length; i++) {
+          this.dataSource.datasets[0].data[i] = budgetData[i].budget;
+          this.dataSource.labels[i] = budgetData[i].title;
+        }
+        this.createChart();
+      },
+      (error) => {
+        console.error('Error fetching budget data:', error);
       }
-      this.createChart();
-    });
+    );
   }
 
   createChart() {
     const canvas = <HTMLCanvasElement>document.getElementById('myChart')!;
     const ctx = canvas.getContext('2d')!;
-    const myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: this.dataSource
+    new Chart(ctx, {
+      type: 'pie',
+      data: this.dataSource,
     });
   }
 }
